@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png" />
+
+    <title>Frontend Mentor | Fylo data storage component</title>
+
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap");
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: "Raleway", sans-serif;
+      }
+      main {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        width: 100vw;
+        height: 100vh;
+
+        background-color: hsl(229, 57%, 11%);
+        background-image: url("./images/bg-desktop.png");
+        background-repeat: no-repeat;
+        background-position: bottom;
+
+        padding: 2rem;
+      }
+      .boxes {
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+
+        gap: 2rem;
+
+        width: 100%;
+      }
+      .firstBox,
+      .secondBox {
+        background-color: hsl(228, 56%, 26%);
+
+        border-radius: 0.7rem;
+      }
+      .firstBox {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: left;
+
+        flex-direction: column;
+
+        height: 13rem;
+        width: 22rem;
+
+        border-top-right-radius: 6.5rem;
+
+        padding-left: 2.5rem;
+      }
+      .buttonsContainer {
+        display: flex;
+
+        gap: 1rem;
+      }
+      .imgButton {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        height: 3rem;
+        width: 3rem;
+
+        background-color: hsl(229, 57%, 11%);
+
+        border-radius: 0.6rem;
+      }
+      .secondBox {
+        display: flex;
+        align-items: left;
+        flex-direction: column;
+
+        height: 10rem;
+        width: 35rem;
+
+        padding: 2rem 3rem;
+
+        position: relative;
+      }
+      .secondBoxTextContainer {
+        color: hsl(243, 100%, 93%);
+        font-size: 14px;
+
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+      }
+      .secondBoxTextContainer span {
+        font-weight: bold;
+      }
+      .progressBarContainer {
+        position: relative;
+
+        width: 100%;
+        height: 1.2rem;
+
+        background-color: hsl(229, 57%, 11%);
+
+        border-radius: 1rem;
+
+        padding: 0.2rem;
+
+        display: flex;
+        align-items: center;
+      }
+      .progressBar {
+        width: 81%;
+        height: 100%;
+
+        background-image: linear-gradient(to right, hsl(6, 100%, 80%), hsl(335, 100%, 65%));
+
+        border-radius: 1rem;
+
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+
+        padding: 1.5px;
+      }
+      .point {
+        height: 0.7rem;
+        width: 0.7rem;
+
+        border-radius: 50%;
+
+        background-color: white;
+      }
+      .minProgress,
+      .maxProgress {
+        color: hsl(243, 100%, 93%);
+        font-size: 12px;
+        font-weight: bold;
+
+        position: absolute;
+        bottom: -140%;
+      }
+      .minProgress {
+        left: -0.3rem;
+      }
+      .maxProgress {
+        right: -0.3rem;
+      }
+      .cloudContainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        height: 4.5rem;
+        width: 11rem;
+
+        background-color: white;
+
+        color: hsl(229, 7%, 55%);
+        font-weight: bold;
+        font-size: 13px;
+
+        border-radius: 0.5rem 0.5rem 0 0.5rem;
+
+        position: absolute;
+        top: -30%;
+        right: 3rem;
+      }
+      .cloudContainer::after {
+        height: 0;
+        width: 0;
+
+        border-top: 2rem solid white;
+        border-bottom: 2rem solid transparent;
+        border-left: 2rem solid transparent;
+        border-right: 0rem solid transparent;
+
+        content: "";
+
+        position: absolute;
+
+        bottom: -70%;
+        right: 0;
+      }
+      .cloudContainer span {
+        font-weight: bold;
+        font-size: 38px;
+        color: black;
+      }
+      .cloudContainer {
+        gap: 0.5rem;
+      }
+      @media screen and (max-width: 375px) {
+        main {
+          padding: 1.5rem;
+        }
+        .boxes {
+          flex-direction: column;
+
+          gap: 1rem;
+        }
+
+        .firstBox {
+          width: 100%;
+        }
+        .secondBox {
+          width: 100%;
+
+          align-items: center;
+
+          padding: 2rem;
+        }
+        .secondBoxTextContainer {
+          margin-top: 0;
+        }
+        .progressBarContainer {
+          width: 100%;
+        }
+        .cloudContainer {
+          border-radius: 0.5rem;
+          position: absolute;
+
+          top: 77%;
+          right: auto;
+          margin: auto;
+
+          height: 4.5rem;
+        }
+        .cloudContainer::after {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- You’ve used 815 GB of your storage 185 GB Left 0 GB 1000 GB -->
+    <main>
+      <div class="boxes">
+        <div class="firstBox">
+          <div class="logoContainer">
+            <img src="./images/logo.svg" alt="" class="logo" />
+          </div>
+          <div class="buttonsContainer">
+            <div class="imgButton"><img src="./images/icon-document.svg" alt="" /></div>
+            <div class="imgButton"><img src="./images/icon-folder.svg" alt="" /></div>
+            <div class="imgButton"><img src="./images/icon-upload.svg" alt="" /></div>
+          </div>
+        </div>
+        <div class="secondBox">
+          <div class="secondBoxTextContainer">
+            <p>You’ve used <span>815 GB </span>of your storage</p>
+          </div>
+          <div class="progressBarContainer">
+            <div class="progressBar"><div class="point"></div></div>
+            <p class="minProgress">0 GB</p>
+            <p class="maxProgress">1000 GB</p>
+          </div>
+          <div class="cloudContainer"><span>185 </span> GB LEFT</div>
+        </div>
+      </div>
+    </main>
+
+    <!-- <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="#">Your Name Here</a>.
+  </div> -->
+  </body>
+</html>
